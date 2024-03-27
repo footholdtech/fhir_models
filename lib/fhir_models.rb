@@ -25,11 +25,18 @@ require File.join(root, 'lib', 'fhir_models', 'fhir.rb')
 # Dir.glob(File.join(root, 'lib', 'fhir_models', 'fhir', '*.rb')).sort.each do |file|
 #   require file
 # end
+
+# We need metadata.rb for the TYPES, primarily (things like Address and CodeableConcept)
 require File.join(root, 'lib', 'fhir_models', 'fhir', 'metadata.rb')
 
-# The following line would need to be changed whenever more than just the basic Patient
+# The following array would need to be appended to whenever more than just the basic Patient
 # FHIR model is in use
-require File.join(root, 'lib', 'fhir_models', 'fhir', 'resources', 'Patient.rb')
+
+required_resources = ['Patient.rb']
+
+required_resources.each do |resource|
+  require File.join(root, 'lib', 'fhir_models', 'fhir', 'resources', resource)
+end
 
 Dir.glob(File.join(root, 'lib', 'fhir_models', 'fhir', 'types', '*.rb')).sort.each do |file|
   require file
