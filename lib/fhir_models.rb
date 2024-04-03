@@ -1,3 +1,5 @@
+# Modifications (C) 2024 Foothold Technology
+
 root = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
 
 require File.join(root, 'lib', 'fhir_models', 'version')
@@ -17,10 +19,18 @@ end
 require File.join(root, 'lib', 'fhir_models', 'fhir.rb')
 
 # Require the generated code
-Dir.glob(File.join(root, 'lib', 'fhir_models', 'fhir', '*.rb')).sort.each do |file|
-  require file
+
+# We need metadata.rb for the TYPES, primarily (things like Address and CodeableConcept)
+require File.join(root, 'lib', 'fhir_models', 'fhir', 'metadata.rb')
+
+# Add additional resources to this array as required.
+required_resources = ['Patient.rb']
+
+required_resources.each do |resource|
+  require File.join(root, 'lib', 'fhir_models', 'fhir', 'resources', resource)
 end
-Dir.glob(File.join(root, 'lib', 'fhir_models', 'fhir', '**', '*.rb')).sort.each do |file|
+
+Dir.glob(File.join(root, 'lib', 'fhir_models', 'fhir', 'types', '*.rb')).sort.each do |file|
   require file
 end
 
