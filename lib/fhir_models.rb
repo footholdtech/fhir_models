@@ -1,3 +1,5 @@
+# Modifications (C) 2024 Foothold Technology
+
 root = File.expand_path '..', File.dirname(File.absolute_path(__FILE__))
 
 require File.join(root, 'lib', 'fhir_models', 'version')
