@@ -21,9 +21,7 @@ require File.join(root, 'lib', 'fhir_models', 'fhir.rb')
 # We need metadata.rb for the TYPES, primarily (things like Address and CodeableConcept)
 require File.join(root, 'lib', 'fhir_models', 'fhir', 'metadata.rb')
 
-# The following array would need to be appended to whenever more than just the basic Patient
-# FHIR model is in use
-
+# Add additional resources to this array as required.
 required_resources = ['Patient.rb']
 
 required_resources.each do |resource|
