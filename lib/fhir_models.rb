@@ -18,14 +18,6 @@ require File.join(root, 'lib', 'fhir_models', 'fhir.rb')
 
 # Require the generated code
 
-# disable the blind loading of every file in the fhir_models/fhir subdirectory as these
-# require extra memory that can cause problems on staging environments and only require
-# what is necessary for the FCM FHIR implementation
-#
-# Dir.glob(File.join(root, 'lib', 'fhir_models', 'fhir', '*.rb')).sort.each do |file|
-#   require file
-# end
-
 # We need metadata.rb for the TYPES, primarily (things like Address and CodeableConcept)
 require File.join(root, 'lib', 'fhir_models', 'fhir', 'metadata.rb')
 
